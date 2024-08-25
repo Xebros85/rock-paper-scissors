@@ -1,17 +1,11 @@
 // Global Variables
-let computerScore = 0;
-let userScore = 0;
-const choices = ["rock", "paper", "scissors"];
-let computerChoice = getComputerChoice();
-let userChoice = getUserChoice();
 
+const choices = ["rock", "paper", "scissors"];
 
 // function will get the computer's choice. Rock paper or scissors
-// 0 == Rock 1 == Paper 2 == Scissors
 
 function getComputerChoice() {
-    let compChoiceIndex = Math.floor(Math.random() * choices.length);
-    console.log(choices[compChoiceIndex]);
+    let compChoiceIndex = Math.floor(Math.random() * choices.length);    
     return choices[compChoiceIndex];    
 }
 
@@ -42,72 +36,65 @@ function getUserChoice() {
 // compare computer choice to user choice
 // Rock beats scissors, Scissors beats paper, paper beats rock
 
-function playRound() {        
+function playRound() { 
+    let userChoice = getUserChoice();
+    let computerChoice = getComputerChoice();       
 
-    switch (userChoice) {
-        case "rock":
-            if (computerChoice === "paper") {                
-                return "lose";
-            } else if (computerChoice === "scissors") {                
-                return "win";
-            } else {
-                return "draw";
-            }        
-        
-        case "paper":
-            if (computerChoice === "scissors") {                
-                return "lose";
-            } else if (computerChoice === "rock") {                
-                return "win";
-            } else {
-                return "draw";
-            }
-            
-        case "scissors":
-            if (computerChoice === "rock") {                
-                return "lose";
-            } else if (computerChoice === "paper") {                
-                return "win";
-            } else {
-                return "draw";
-            } 
+    let result;
+    if (userChoice === computerChoice){
+        result = "draw";
+    } else if (
+        (userChoice === "rock" && computerChoice === "scissors") ||
+        (userChoice === "paper" && computerChoice === "rock") ||
+        (userChoice === "scissors" && computerChoice === "paper")
+    ) {
+        result = "win";
+    } else {
+        result = "lose";
     }
-    
+
+    return {result, userChoice, computerChoice};
 }
 
 // Tally the score
 function playGame() {    
     let roundCount = 1;
+    let computerScore = 0;
+    let userScore = 0;
 
-    while (roundCount <= 5) {
-        let round = playRound();
-        switch (round) {
+    while (roundCount <= 5) {        
+        let {result, userChoice, computerChoice} = playRound();
+
+        switch (result) {
             case "win":
+                userScore++;
                 alert(`\nYou Win!\n
                 The computer chose: ${computerChoice.toUpperCase()}
                 You chose: ${userChoice.toUpperCase()}\n
-                Computer Score: ${computerScore} Player Score: ${userScore}`);
-                userScore++;                
+                Computer Score: ${computerScore} Player Score: ${userScore}`);                                
                 break;
 
             case "lose":
+                computerScore++;
                 alert(`\nYou Lost!\n
                 The computer chose: ${computerChoice.toUpperCase()}
                 You chose: ${userChoice.toUpperCase()}\n
-                Computer Score: ${computerScore} Player Score: ${userScore}`);
-                computerScore++;                
+                Computer Score: ${computerScore} Player Score: ${userScore}`);                                
                 break;
 
             case "draw":
-                alert("It's a tie!");            
+                roundCount--;
+                alert(`\nIt's a Tie!!\n
+                    The computer chose: ${computerChoice.toUpperCase()}
+                    You chose: ${userChoice.toUpperCase()}\n
+                    Computer Score: ${computerScore} Player Score: ${userScore}`);            
                 break;
         }
         roundCount++;
     }
     
     // Display final result:
-    alert(`Game Over!\nFinal Scores:\nComputer: ${computerScore}\nPlayer: ${userScore}`)
-}   
-
+    alert(`Game Over!\n\nFinal Score:\n\nComputer: ${computerScore}\nPlayer: ${userScore}`)
+}
 
 playGame();
