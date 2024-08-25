@@ -1,43 +1,36 @@
+// Global Variables
+let computerScore = 0;
+let userScore = 0;
+const choices = ["rock", "paper", "scissors"];
+let computerChoice = getComputerChoice();
+let userChoice = getUserChoice();
+
 
 // function will get the computer's choice. Rock paper or scissors
 // 0 == Rock 1 == Paper 2 == Scissors
-// Rock beats scissors, Scissors beats paper, Paper beats rock
+
 function getComputerChoice() {
-    const minCeiled = Math.ceil(0);
-    const maxFloored = Math.floor(2);
-    compChoice = Math.floor(Math.random() * (maxFloored - minCeiled + 1));
-    if (compChoice === 0) {
-        return "rock";
-    } else if (compChoice === 1) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
+    let compChoiceIndex = Math.floor(Math.random() * choices.length);
+    console.log(choices[compChoiceIndex]);
+    return choices[compChoiceIndex];    
 }
 
-console.log(getComputerChoice());
-
-// Prompt the user to input their choice. Rock Paper or Scissors  
-
+// Prompt the user to input their choice. Rock Paper or Scissors 
 function getUserChoice() {
-    const userChoices = [
-        'rock',
-        'paper',
-        'scissors'
-    ]    
+            
     let validInput = false;
 
     while (validInput === false) {        
         let userInput = window.prompt("Let's play a game...\n\nChoose wisely:\nRock, Paper, or Scissors:");
 
-        if(userInput === null) {
-            alert("Input Cancelled. Please try again.");
+        if (userInput === null) {
+            alert("Input cancelled. Please provide a valid input.")
             continue;
         }
 
         userInput = userInput.trim().toLowerCase();
         
-        if (userChoices.includes(userInput)) {
+        if (choices.includes(userInput)) {
             validInput = true;
             return userInput;
         } else {
@@ -46,14 +39,75 @@ function getUserChoice() {
     } 
 }
 
-console.log(getUserChoice());
+// compare computer choice to user choice
+// Rock beats scissors, Scissors beats paper, paper beats rock
 
-// compare computerChoice with userInput
+function playRound() {        
+
+    switch (userChoice) {
+        case "rock":
+            if (computerChoice === "paper") {                
+                return "lose";
+            } else if (computerChoice === "scissors") {                
+                return "win";
+            } else {
+                return "draw";
+            }        
+        
+        case "paper":
+            if (computerChoice === "scissors") {                
+                return "lose";
+            } else if (computerChoice === "rock") {                
+                return "win";
+            } else {
+                return "draw";
+            }
+            
+        case "scissors":
+            if (computerChoice === "rock") {                
+                return "lose";
+            } else if (computerChoice === "paper") {                
+                return "win";
+            } else {
+                return "draw";
+            } 
+    }
+    
+}
+
+// Tally the score
+function playGame() {    
+    let roundCount = 1;
+
+    while (roundCount <= 5) {
+        let round = playRound();
+        switch (round) {
+            case "win":
+                alert(`\nYou Win!\n
+                The computer chose: ${computerChoice.toUpperCase()}
+                You chose: ${userChoice.toUpperCase()}\n
+                Computer Score: ${computerScore} Player Score: ${userScore}`);
+                userScore++;                
+                break;
+
+            case "lose":
+                alert(`\nYou Lost!\n
+                The computer chose: ${computerChoice.toUpperCase()}
+                You chose: ${userChoice.toUpperCase()}\n
+                Computer Score: ${computerScore} Player Score: ${userScore}`);
+                computerScore++;                
+                break;
+
+            case "draw":
+                alert("It's a tie!");            
+                break;
+        }
+        roundCount++;
+    }
+    
+    // Display final result:
+    alert(`Game Over!\nFinal Scores:\nComputer: ${computerScore}\nPlayer: ${userScore}`)
+}   
 
 
-
-
-// play game -- while round count is less than 5 keep playing
-// best 3 out of 5??
-// This function wraps the rest of the program
-// keeps score 
+playGame();
