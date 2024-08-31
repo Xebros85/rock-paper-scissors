@@ -1,0 +1,79 @@
+* {
+    background-color: blanchedalmond;
+    margin: 0;
+    padding: 0;    
+}
+
+#game-window {
+    display: flex;
+    justify-content: center;    
+}
+
+#game {
+    display: flex;
+    flex-direction: column;    
+}
+
+h1 {
+    margin: 25px;
+}
+
+h2 {
+    margin: 10px;
+}
+
+p {
+    align-self: center;
+}
+
+#resultBox {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;    
+    align-content: center;
+    padding: 10px;
+}
+
+#userChoice, #computerChoice {
+    margin: 25px;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    margin: 20px;
+    font-size: 22px;
+}
+
+#choiceRock {
+    background-color: grey;
+    color: white;
+    
+}
+
+#choicePaper {
+    background-color: white;
+}
+
+#choiceScissors {
+    background-color: red;
+    color: white;
+}
+
+#winnerBox {
+    display: flex;
+    justify-content: center;
+}

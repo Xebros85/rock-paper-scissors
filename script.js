@@ -97,4 +97,4 @@ function playGame() {
     alert(`Game Over!\n\nFinal Score:\n\nComputer: ${computerScore}\nPlayer: ${userScore}`)
 }
 
-playGame();
+
