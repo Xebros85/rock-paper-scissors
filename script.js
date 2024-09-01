@@ -2,6 +2,7 @@
 
 const choices = ["rock", "paper", "scissors"];
 
+
 // function will get the computer's choice. Rock paper or scissors
 
 function getComputerChoice() {
@@ -11,27 +12,48 @@ function getComputerChoice() {
 
 // Prompt the user to input their choice. Rock Paper or Scissors 
 function getUserChoice() {
-            
-    let validInput = false;
+       
+    let buttonChoices = document.querySelector("#buttonChoices");
 
-    while (validInput === false) {        
-        let userInput = window.prompt("Let's play a game...\n\nChoose wisely:\nRock, Paper, or Scissors:");
+    buttonChoices.addEventListener("click", (event) => {
+        let target = event.target;        
 
-        if (userInput === null) {
-            alert("Input cancelled. Please provide a valid input.")
-            continue;
+        switch (target.id) {
+            case "choiceRock":
+                console.log("rock");                                
+                break;
+            case "choicePaper":
+                console.log("paper");                                
+                break;
+            case "choiceScissors":
+                console.log("scissors");                                
+                break;
         }
+    })
 
-        userInput = userInput.trim().toLowerCase();
+    
         
-        if (choices.includes(userInput)) {
-            validInput = true;
-            return userInput;
-        } else {
-            alert("Invalid choice. Please choose Rock, Paper or Scissors.");
-        }
-    } 
 }
+    // let validInput = false;
+
+    // while (validInput === false) {        
+    //     let userInput = window.prompt("Let's play a game...\n\nChoose wisely:\nRock, Paper, or Scissors:");
+
+    //     if (userInput === null) {
+    //         alert("Input cancelled. Please provide a valid input.")
+    //         continue;
+    //     }
+
+    //     userInput = userInput.trim().toLowerCase();
+        
+    //     if (choices.includes(userInput)) {
+    //         validInput = true;
+    //         return userInput;
+    //     } else {
+    //         alert("Invalid choice. Please choose Rock, Paper or Scissors.");
+    //     }
+    // } 
+
 
 // compare computer choice to user choice
 // Rock beats scissors, Scissors beats paper, paper beats rock
