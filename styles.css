@@ -6,12 +6,17 @@
 
 #game-window {
     display: flex;
-    justify-content: center;    
+    justify-content: center;        
 }
 
 #game {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;       
+}
+
+#scores {
+    display: flex;
+    justify-content: space-evenly;    
 }
 
 h1 {
@@ -34,9 +39,10 @@ p {
 
 #results {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;       
+    justify-content: center;
     align-content: center;
-    padding: 10px;
+    margin: 25px;
 }
 
 #userChoice, #computerChoice {

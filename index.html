@@ -9,29 +9,33 @@
 </head>
 <body>
     <div id="game-window">
+        
         <div id="game">
             <h1>Welcome to Rock, Paper, Scissors!!</h1>
             <div id="choices">
                 <h3 id="challenge">User - Choose your Weapon:</h3>
                 <div id="buttonChoices">
-                    <button id="choiceRock" onclick="getUserChoice()">Rock</button>
-                    <button id="choicePaper" onclick="getUserChoice()">Paper</button>
-                    <button id="choiceScissors" onclick="getUserChoice()">Scissors</button>
+                    <button id="choiceRock">Rock</button>
+                    <button id="choicePaper">Paper</button>
+                    <button id="choiceScissors">Scissors</button>
                 </div>
             </div>
+
+            <div id="scores">
+                <span id="player-score">Your Score: 0</span>            
+                <span id="comp-score">Computer Score: 0</span>
+            </div>
+
             <div id="resultBox">
-                <div id="results">
-                    <h2 id="user-choice">User: </h2>
-                    <p id="versus">VERSUS</p>
-                    <h2 id="computerChoice">Computer's choice: ${computer-choice}</h2>
+                <div id="results">                    
                 </div>                
             </div>
+
             <div id="winnerBox">
-                <div id="winner">
-                    <h2 id="showWinner">The Winner is: ${winner}!!</h2>
-                    <h3 id="scores">User Score: 0 Computer Score: 0</h3>
+                <div id="winner">                    
                 </div>
-            </div>                        
+            </div>
+
         </div>
     </div>   
 </body>
