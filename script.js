@@ -53,14 +53,14 @@ const checkWinner = (playerScore, compScore) => {
     if (playerScore === 5) {
         const h3 = document.createElement("h3");
         h3.classList.add('player-won');
-        h3.innerText = "You Win!"
+        h3.innerText = "You Win! Awesome job!"
         resultsDiv.appendChild(h3);
     }
 
     if (compScore === 5) {
         const h3 = document.createElement("h3");
         h3.classList.add('comp-won');
-        h3.innerText = "You Lose!"
+        h3.innerText = "You Lose! Better luck next time!"
         resultsDiv.appendChild(h3);
     }    
 } 
